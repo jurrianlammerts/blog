@@ -13,7 +13,7 @@ import {
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>NextUI | Create Next App</title>
         <meta
@@ -32,9 +32,9 @@ const Home: NextPage = () => {
         style={{ height: '100vh' }}
       >
         <Spacer />
-        <Image src="/logo.svg" alt="Vercel Logo" width={200} height={200} />
+        <Image src="/vercel.svg" alt="Vercel Logo" width={200} height={200} />
         <Spacer />
-        <Text h1 className={styles.title}>
+        <Text h1>
           Welcome to&nbsp;
           <Link
             color="default"
