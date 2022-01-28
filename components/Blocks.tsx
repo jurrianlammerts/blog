@@ -66,7 +66,14 @@ const renderBlock = (block: any) => {
         value.type === 'external' ? value.external.url : value.file.url;
       const caption = value.caption ? value.caption[0]?.plain_text : '';
       return (
-        <Card css={{ position: 'relative', height: '25rem', boxShadow: '$md' }}>
+        <Card
+          css={{
+            position: 'relative',
+            height: '25rem',
+            boxShadow: '$md',
+            mb: '2rem',
+          }}
+        >
           <figure>
             <Image src={src} alt={caption} layout="fill" objectFit="cover" />
             {caption && (

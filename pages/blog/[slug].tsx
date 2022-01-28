@@ -1,4 +1,5 @@
 import { GetStaticPropsContext } from 'next';
+import Head from 'next/head';
 import { compact } from 'lodash';
 
 import { getPost, getPostContent, getPosts } from '../../lib/api';
@@ -12,7 +13,6 @@ interface Props {
 }
 
 const BlogPost = ({ postData, postContent }: Props) => {
-  console.log('postContent: ', postContent);
   const title = postData.properties.name.title[0].plain_text;
   const subtitle = postData.properties.subtitle.rich_text[0].plain_text;
   const published = postData.properties.published.date.start;
@@ -20,14 +20,21 @@ const BlogPost = ({ postData, postContent }: Props) => {
   const thumbnail = postData.properties.thumbnail.files[0].file.url;
 
   return (
-    <Post
-      title={title}
-      subtitle={subtitle}
-      published={published}
-      tags={tags}
-      thumbnail={thumbnail}
-      content={postContent}
-    />
+    <>
+      <Head>
+        <title>Next.js blog - {title}</title>
+        <meta name="description" content={subtitle} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Post
+        title={title}
+        subtitle={subtitle}
+        published={published}
+        tags={tags}
+        thumbnail={thumbnail}
+        content={postContent}
+      />
+    </>
   );
 };
 

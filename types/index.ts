@@ -22,6 +22,11 @@ export type PostData = {
         plain_text: string;
       }[];
     };
+    slug: {
+      rich_text: {
+        plain_text: string;
+      }[];
+    };
     published: {
       date: {
         start: string;

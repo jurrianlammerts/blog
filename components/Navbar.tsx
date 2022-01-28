@@ -9,6 +9,7 @@ import {
 } from '@nextui-org/react';
 import { useTheme as useNextTheme } from 'next-themes';
 import Link from 'next/link';
+import Headroom from 'react-headroom';
 import { Moon, Sun } from 'react-feather';
 
 const Navbar = () => {
@@ -16,7 +17,11 @@ const Navbar = () => {
   const { isDark } = useTheme();
 
   return (
-    <>
+    <Headroom
+      style={{
+        backgroundColor: isDark ? '#1d1d1d' : '#fff',
+      }}
+    >
       <Container>
         <Row justify="space-between" align="center">
           <Col>
@@ -43,7 +48,7 @@ const Navbar = () => {
         </Row>
       </Container>
       <Divider />
-    </>
+    </Headroom>
   );
 };
 
