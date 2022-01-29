@@ -35,7 +35,6 @@ const Home = ({ posts = [] }: any) => {
         >
           The Blog
         </Text>
-        {console.log('posts: ', posts.results)}
         <Overview posts={posts.results} />
       </Container>
     </div>

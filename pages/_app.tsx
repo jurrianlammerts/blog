@@ -29,6 +29,7 @@ const lightTheme = createTheme({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  console.log('test log');
   return (
     <NextThemesProvider
       defaultTheme="system"
