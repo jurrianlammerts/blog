@@ -20,7 +20,7 @@ const lightTheme = createTheme({
   type: 'light',
   theme: {
     colors: {
-      background: '#fff',
+      background: 'green',
       text: '#1d1d1d',
     },
     space: {},

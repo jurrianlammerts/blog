@@ -22,7 +22,7 @@ const BlogPost = ({ postData, postContent }: Props) => {
   return (
     <>
       <Head>
-        <title>Next.js blog - {title}</title>
+        <title>Blog - {title}</title>
         <meta name="description" content={subtitle} />
         <link rel="icon" href="/favicon.ico" />
       </Head>

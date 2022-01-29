@@ -9,13 +9,19 @@ const renderBlock = (block: any) => {
 
   switch (type) {
     case 'paragraph':
-      return value.text.map((text: any, key: number) => {
-        return (
-          <Text key={key} as="p" css={{ mb: '1rem' }}>
-            {text.text.content}
-          </Text>
-        );
-      });
+      return (
+        <Text as="p" css={{ mb: '1rem' }}>
+          {value.text.map((item: any, key: number) => {
+            if (item.href)
+              return (
+                <Link href={item.href} style={{ textDecoration: 'underline' }}>
+                  {item.plain_text}
+                </Link>
+              );
+            return <Fragment key={key}>{item.plain_text}</Fragment>;
+          })}
+        </Text>
+      );
     case 'heading_1':
       return value.text.map((text: any, key: number) => (
         <Text key={key} as="h1" css={{ my: '0.5rem' }}>

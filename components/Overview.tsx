@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 import { PostData } from '../types';
 import Image from 'next/image';
+import { formatDate } from '../helpers/formatDate';
 
 interface Props {
   posts: PostData[];
@@ -42,13 +43,15 @@ const Overview = ({ posts }: Props) => {
                 mt: '1rem',
               }}
             >
-              {highlightedPost.properties.published.date.start}
+              {formatDate(highlightedPost.properties.published.date.start)}
             </Text>
             <Text
               h2
               css={{
-                fontSize: '3.5rem',
-                lineHeight: '1.2',
+                '@sm': {
+                  lineHeight: '1.2',
+                  fontSize: '3.5rem',
+                },
               }}
             >
               {highlightedPost.properties.name.title[0].plain_text}
@@ -63,7 +66,13 @@ const Overview = ({ posts }: Props) => {
         gap={4}
         justify="space-between"
         css={{
-          marginTop: '2rem',
+          marginTop: '0',
+          paddingTop: '0',
+
+          '@sm': {
+            marginTop: '2rem',
+            paddingTop: '1.5rem',
+          },
         }}
       >
         {otherPosts.map((post: PostData) => (
@@ -103,7 +112,7 @@ const Overview = ({ posts }: Props) => {
                       mt: '1rem',
                     }}
                   >
-                    {post.properties.published.date.start}
+                    {formatDate(post.properties.published.date.start)}
                   </Text>
                   <Text h2>{post.properties.name.title[0].plain_text}</Text>
                   <Text color="$accents6">
@@ -123,27 +132,41 @@ export default Overview;
 
 const HighLightedPost = styled.a`
   position: relative;
-  height: 30rem;
+  padding: 1.5rem;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  @media (min-width: 960px) {
+    height: 30rem;
+    flex-direction: row;
+  }
 `;
 
 const HighLightedPostImage = styled.div`
   position: relative;
-  height: 100%;
+  height: 15rem;
   width: 100%;
   overflow: hidden;
   border-radius: 0.5rem;
+
+  @media (min-width: 960px) {
+    height: 100%;
+  }
 `;
 
 const HighLightedPostContent = styled.div`
-  width: 40rem;
+  width: 100%;
   height: 100%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 0;
+
+  @media (min-width: 960px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    width: 40rem;
+  }
 `;
 
 const PostImage = styled.div`

@@ -32,8 +32,19 @@ const Navbar = () => {
         backgroundColor: show ? (isDark ? '#1d1d1d' : '#fff') : 'transparent',
       }}
     >
-      <Container>
-        <Row justify="space-between" align="center">
+      <Container
+        as="nav"
+        css={{
+          maxW: '75rem',
+        }}
+      >
+        <Row
+          justify="space-between"
+          align="center"
+          css={{
+            px: '1.5rem',
+          }}
+        >
           <Col>
             <Link href="/" passHref>
               <Text
