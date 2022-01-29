@@ -128,6 +128,7 @@ const Navbar = () => {
             </Link>
           </Col>
           <Switch
+            aria-label="Toggle dark mode"
             color="primary"
             checked={!isDark}
             onChange={(e) => setTheme(e.target.checked ? 'light' : 'dark')}
