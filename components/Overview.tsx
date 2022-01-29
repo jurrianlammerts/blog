@@ -82,8 +82,12 @@ const Overview = ({ posts }: Props) => {
             sm={6}
             lg={4}
             css={{
+              px: '0',
               maxW: '30rem',
               w: '100%',
+              '@sm': {
+                padding: '1.5rem',
+              },
             }}
           >
             <NextLink
@@ -132,13 +136,13 @@ export default Overview;
 
 const HighLightedPost = styled.a`
   position: relative;
-  padding: 1.5rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 
   @media (min-width: 960px) {
     height: 30rem;
+    padding: 1.5rem;
     flex-direction: row;
   }
 `;

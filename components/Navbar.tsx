@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
+  Button,
   Col,
   Container,
   Divider,
@@ -14,9 +15,14 @@ import {
 import { useTheme as useNextTheme } from 'next-themes';
 import Link from 'next/link';
 import Headroom from 'react-headroom';
-import { Moon, Sun } from 'react-feather';
+import { Menu, Moon, Sun } from 'react-feather';
 
-const Navbar = () => {
+interface Props {
+  showMenu: boolean;
+  setShowMenu: (show: boolean) => void;
+}
+
+const Navbar = ({ showMenu, setShowMenu }: Props) => {
   const router = useRouter();
   const [show, setShow] = useState(false);
   const { setTheme } = useNextTheme();
@@ -36,13 +42,17 @@ const Navbar = () => {
         as="nav"
         css={{
           maxW: '75rem',
+          zIndex: 1,
         }}
       >
         <Row
           justify="space-between"
           align="center"
           css={{
-            px: '1.5rem',
+            px: '0',
+            '@sm': {
+              px: '1.5rem',
+            },
           }}
         >
           <Col>
@@ -61,9 +71,12 @@ const Navbar = () => {
           </Col>
           <Col
             css={{
-              display: 'flex',
               justifyContent: 'flex-end',
               px: '2rem',
+              display: 'none',
+              '@sm': {
+                display: 'flex',
+              },
             }}
           >
             <Link href="/" passHref>
@@ -127,14 +140,45 @@ const Navbar = () => {
               </Text>
             </Link>
           </Col>
-          <Switch
-            aria-label="Toggle dark mode"
-            color="primary"
-            checked={!isDark}
-            onChange={(e) => setTheme(e.target.checked ? 'light' : 'dark')}
-            iconOn={<Sun />}
-            iconOff={<Moon />}
-          />
+          <Col
+            css={{
+              justifyContent: 'flex-end',
+              display: 'flex',
+              '@sm': {
+                display: 'none',
+              },
+            }}
+          >
+            <Button
+              onClick={() => {
+                setShowMenu(!showMenu);
+              }}
+              auto
+              light
+              css={{ py: '2rem' }}
+            >
+              <Menu size={30} />
+            </Button>
+          </Col>
+          <Col
+            css={{
+              justifyContent: 'flex-end',
+              w: '10rem',
+              display: 'none',
+              '@sm': {
+                display: 'flex',
+              },
+            }}
+          >
+            <Switch
+              aria-label={`Toggle dark mode ${isDark ? 'on' : 'off'}`}
+              color="primary"
+              checked={!isDark}
+              onChange={(e) => setTheme(e.target.checked ? 'light' : 'dark')}
+              iconOn={<Sun />}
+              iconOff={<Moon />}
+            />
+          </Col>
         </Row>
       </Container>
       <Divider />
