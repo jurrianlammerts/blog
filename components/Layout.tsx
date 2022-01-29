@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import Navbar from './Navbar';
 
 interface Props {
@@ -8,7 +9,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <Navbar />
-      {children}
+      <main>{children}</main>
     </>
   );
 };

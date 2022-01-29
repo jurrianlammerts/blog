@@ -17,7 +17,7 @@ const BlogPost = ({ postData, postContent }: Props) => {
   const subtitle = postData.properties.subtitle.rich_text[0].plain_text;
   const published = postData.properties.published.date.start;
   const tags = postData.properties.tags.multi_select;
-  const thumbnail = postData.properties.thumbnail.files[0].file.url;
+  const thumbnail = postData.properties.thumbnail?.files[0]?.external.url;
 
   return (
     <>

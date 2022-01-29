@@ -31,7 +31,7 @@ const Post = ({
       {thumbnail && (
         <Row
           css={{
-            height: '20rem',
+            height: '30rem',
             mb: '2rem',
             overflow: 'hidden',
           }}

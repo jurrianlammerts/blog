@@ -32,6 +32,9 @@ export type PostData = {
         start: string;
       };
     };
+    highlighted: {
+      checkbox: boolean;
+    };
     tags: {
       multi_select: {
         name: string;
@@ -40,8 +43,7 @@ export type PostData = {
     };
     thumbnail: {
       files: {
-        file: {
-          name: string;
+        external: {
           url: string;
         };
       }[];

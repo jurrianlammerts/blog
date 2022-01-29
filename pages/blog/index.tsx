@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { Container, Text } from '@nextui-org/react';
 
-import { getPosts } from '../lib/api';
-import Overview from '../components/Overview';
+import { getPosts } from '../../lib/api';
+import Overview from '../../components/Overview';
 
 const Home = ({ posts = [] }: any) => {
   return (
