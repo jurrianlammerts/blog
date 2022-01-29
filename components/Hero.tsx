@@ -28,7 +28,7 @@ const Hero = () => {
             wordBreak: 'break-word',
             '@sm': {
               fontSize: '5rem',
-            }
+            },
           }}
         >
           Digital data analytics_..
@@ -108,12 +108,14 @@ const HeroImage = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
-  max-width: 20rem;
   display: flex;
   @media (min-width: 960px) {
     height: 80vh;
-    max-width: 100%;
     width: 50%;
+  }
+  svg {
+    width: 100%;
+    padding: 1rem;
   }
 `;
 
