@@ -1,17 +1,15 @@
+import styled from '@emotion/styled';
 import { Col, Container, Switch, Text, useTheme } from '@nextui-org/react';
 import { useTheme as useNextTheme } from 'next-themes';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Moon, Sun } from 'react-feather';
 
-const activeStyle = {
-  py: '0.5rem',
-  textGradient: '45deg, $blue500 -20%, $pink500 50%',
-};
-
-const style = {
-  py: '0.5rem',
-};
+const textGradient = `
+  background-image: linear-gradient(45deg, var(--nextui-colors-blue500) -20%, var(--nextui-colors-pink500) 50%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
 
 const Menu = () => {
   const router = useRouter();
@@ -37,35 +35,38 @@ const Menu = () => {
         }}
       >
         <Link href="/" passHref>
-          <Text
-            as="a"
-            size={40}
-            css={router.pathname == '/' ? activeStyle : style}
-            weight="bold"
-          >
-            Home
+          <Text as="a" size={40} weight="bold">
+            <StyledText active={router.pathname == '/'}>Home</StyledText>
           </Text>
         </Link>
 
         <Link href="/wallet" passHref>
-          <Text
-            as="a"
-            size={40}
-            css={router.pathname == '/wallet' ? activeStyle : style}
-            weight="bold"
-          >
-            Wallet
+          <Text as="a" size={40} weight="bold">
+            <StyledText active={router.pathname == '/wallet'}>
+              Wallet
+            </StyledText>
           </Text>
         </Link>
 
         <Link href="/blog" passHref>
-          <Text
-            as="a"
-            size={40}
-            css={router.pathname == '/blog' ? activeStyle : style}
-            weight="bold"
-          >
-            Blog
+          <Text as="a" size={40} weight="bold">
+            <StyledText active={router.pathname == '/blog'}>Blog</StyledText>
+          </Text>
+        </Link>
+
+        <Link href="/careers" passHref>
+          <Text as="a" size={40} weight="bold">
+            <StyledText number={3} active={router.pathname == '/careers'}>
+              Careers
+            </StyledText>
+          </Text>
+        </Link>
+
+        <Link href="/contact" passHref>
+          <Text as="a" size={40} weight="bold">
+            <StyledText active={router.pathname == '/contact'}>
+              Contact
+            </StyledText>
           </Text>
         </Link>
       </Col>
@@ -89,3 +90,24 @@ const Menu = () => {
 };
 
 export default Menu;
+
+const StyledText = styled.span<{ number?: number; active: boolean }>`
+  ${({ active }) => active && textGradient}
+  position: relative;
+  &:after {
+    content: '${({ number }) => number}';
+    position: absolute;
+    top: 0;
+    right: -1.5rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 50%;
+    ${({ active }) => active && textGradient}
+  }
+`;

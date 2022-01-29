@@ -48,8 +48,9 @@ const Overview = ({ posts }: Props) => {
             <Text
               h2
               css={{
+                lineHeight: 1,
+                my: '1rem',
                 '@sm': {
-                  lineHeight: '1.2',
                   fontSize: '3.5rem',
                 },
               }}
@@ -63,11 +64,11 @@ const Overview = ({ posts }: Props) => {
         </HighLightedPost>
       </NextLink>
       <Grid.Container
-        gap={4}
+        gap={2}
         justify="space-between"
         css={{
           marginTop: '0',
-          paddingTop: '0',
+          paddingTop: '1rem',
 
           '@sm': {
             marginTop: '2rem',
@@ -76,20 +77,7 @@ const Overview = ({ posts }: Props) => {
         }}
       >
         {otherPosts.map((post: PostData) => (
-          <Grid
-            key={post.id}
-            xs={12}
-            sm={6}
-            lg={4}
-            css={{
-              px: '0',
-              maxW: '30rem',
-              w: '100%',
-              '@sm': {
-                padding: '1.5rem',
-              },
-            }}
-          >
+          <Grid key={post.id} xs={12} md={6} lg={4}>
             <NextLink
               href={`/blog/${post.properties.slug.rich_text[0].plain_text}`}
               passHref
@@ -118,7 +106,15 @@ const Overview = ({ posts }: Props) => {
                   >
                     {formatDate(post.properties.published.date.start)}
                   </Text>
-                  <Text h2>{post.properties.name.title[0].plain_text}</Text>
+                  <Text
+                    h2
+                    css={{
+                      lineHeight: 1,
+                      my: '1rem',
+                    }}
+                  >
+                    {post.properties.name.title[0].plain_text}
+                  </Text>
                   <Text color="$accents6">
                     {post.properties.subtitle.rich_text[0].plain_text}
                   </Text>
@@ -139,6 +135,7 @@ const HighLightedPost = styled.a`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
 
   @media (min-width: 960px) {
     height: 30rem;

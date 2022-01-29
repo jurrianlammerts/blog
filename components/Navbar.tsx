@@ -62,10 +62,11 @@ const Navbar = ({ showMenu, setShowMenu }: Props) => {
                 size={60}
                 css={{
                   textGradient: '45deg, $blue500 -20%, $pink500 50%',
+                  letterSpacing: '-0.2rem',
                 }}
                 weight="bold"
               >
-                Logo
+                N3XT
               </Text>
             </Link>
           </Col>

@@ -30,13 +30,14 @@ const Home = ({ posts = [] }: any) => {
           css={{
             fontSize: '3rem',
             mb: '2rem',
+            px: '1rem',
             '@sm': {
               px: '1.5rem',
               fontSize: '5rem',
             },
           }}
         >
-          The Blog
+          Tech & more
         </Text>
         <Overview posts={posts.results} />
       </Container>

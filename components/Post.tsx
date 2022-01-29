@@ -106,10 +106,22 @@ const Post = ({
             md={8}
             css={{
               flexDirection: 'column',
+              px: 0,
+              '@sm': {
+                padding: '1.5rem',
+              },
             }}
           >
             <Row justify="center">
-              <Text as="h1">{title}</Text>
+              <Text
+                as="h1"
+                css={{
+                  lineHeight: 1,
+                  mb: '1rem',
+                }}
+              >
+                {title}
+              </Text>
             </Row>
             <Row justify="center">
               <Text as="p" color="$accents6">
