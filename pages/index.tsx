@@ -28,9 +28,12 @@ const Home = ({ posts = [] }: any) => {
         <Text
           h2
           css={{
-            fontSize: '5rem',
+            fontSize: '3rem',
             mb: '2rem',
-            px: '1.5rem',
+            '@sm': {
+              px: '1.5rem',
+              fontSize: '5rem',
+            },
           }}
         >
           The Blog

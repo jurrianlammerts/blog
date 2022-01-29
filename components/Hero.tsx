@@ -22,10 +22,13 @@ const Hero = () => {
         <Text
           h1
           css={{
-            fontSize: '5rem',
+            fontSize: '4rem',
             lineHeight: 1,
             mb: '2rem',
             wordBreak: 'break-word',
+            '@sm': {
+              fontSize: '5rem',
+            }
           }}
         >
           Digital data analytics_..
